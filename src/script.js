@@ -1,6 +1,10 @@
 const newsContainer = document.querySelector(".news-container");
 
 class News {
+  #url = "https://newsdata.io/api/1/news?apikey=";
+  #api_key = "pub_11835f25fa01c23c2bdf1dcc76bf60c25f1db";
+  #language = "&language=en";
+
   constructor() {
     this._getNewsData();
     this._renderNews();
@@ -8,14 +12,9 @@ class News {
   }
 
   _getNewsData() {
-    fetch(
-      "https://newsapi.org/v2/everything?q=tesla&from=2022-09-01&sortBy=publishedAt&apiKey=8b38dc5dc8b1444b8652b344ddb53020"
-    )
-      .then((res) => {
-        if (!res.ok) throw new Error("Unable to load data from the server...");
-        return res.json();
-      })
-      .then((data) => this._renderNews(data.articles))
+    fetch(`${this.#url}${this.#api_key}${this.#language}`)
+      .then((res) => res.json())
+      .then((data) => this._renderNews(data.results))
       .catch((err) => this._renderError(err.message));
   }
 
@@ -28,14 +27,17 @@ class News {
           >
             <img
               class="lg:h-48 md:h-36 w-full object-cover object-center"
-              src="${article.urlToImage}"
+              src="${
+                article.image_url ||
+                "https://www.currys.co.uk/on/demandware.static/-/Sites-dcg-master-catalog/default/dwb66f74e6/images/no-image-found.png"
+              }"
               alt="blog"
             />
             <div class="p-6">
               <h2
                 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1"
               >
-                ${article.author}
+                ${article.source_id}
               </h2>
               <h1 class="title-font text-lg font-medium text-gray-900 mb-3">
                 ${article.title}
@@ -44,7 +46,7 @@ class News {
                 ${article.description}
               </p>
               <div class="flex items-center flex-wrap justify-between">
-                <a href="${article.url}" target="_blank"
+                <a href="${article.link}" target="_blank"
                   class="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0"
                   >Read More
                   <svg
@@ -61,7 +63,7 @@ class News {
                   </svg>
                 </a>
                 <p class="leading-relaxed">
-                ${this._getTime(new Date(article.publishedAt))}
+                ${this._getTime(new Date(article.pubDate))}
               </p>
               </div>
             </div>
