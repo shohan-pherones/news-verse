@@ -75,7 +75,7 @@ class News {
   }
 
   _renderError(errMsg) {
-    console.log(errMsg);
+    newsContainer.insertAdjacentText("beforeend", errMsg);
   }
 
   _getTime(dateTime) {
