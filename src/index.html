@@ -9,8 +9,43 @@
     <title>News Verse</title>
   </head>
   <body>
-    <header>
-      <section class="text-gray-600 body-font">
+    <header class="text-gray-600 body-font">
+      <div
+        class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center"
+      >
+        <a
+          class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0"
+        >
+          <span class="ml-3 text-xl">News Verse</span>
+        </a>
+        <nav
+          class="md:ml-auto flex flex-wrap items-center text-base justify-center"
+        >
+          <a href="#section-1" class="mr-5 hover:text-gray-900">Home</a>
+          <a href="#section-2" class="mr-5 hover:text-gray-900">News</a>
+          <a href="#section-3" class="mr-5 hover:text-gray-900">Feedback</a>
+        </nav>
+        <button
+          class="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0"
+        >
+          Subscribe
+          <svg
+            fill="none"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            class="w-4 h-4 ml-1"
+            viewBox="0 0 24 24"
+          >
+            <path d="M5 12h14M12 5l7 7-7 7"></path>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <section class="text-gray-600 body-font" id="section-1">
         <div
           class="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center"
         >
@@ -102,15 +137,14 @@
           </div>
         </div>
       </section>
-    </header>
 
-    <main>
-      <section class="text-gray-600 body-font">
+      <section class="text-gray-600 body-font" id="section-2">
         <div class="container px-5 py-24 mx-auto">
           <div class="news-container flex flex-wrap -m-4"></div>
         </div>
       </section>
-      <section class="text-gray-600 body-font relative">
+
+      <section class="text-gray-600 body-font relative" id="section-3">
         <div class="container px-5 py-24 mx-auto flex sm:flex-nowrap flex-wrap">
           <div
             class="lg:w-2/3 md:w-1/2 bg-gray-300 rounded-lg overflow-hidden sm:mr-10 p-10 flex items-end justify-start relative"

@@ -3,7 +3,7 @@ const newsContainer = document.querySelector(".news-container");
 class News {
   #URL =
     "https://newsapi.org/v2/everything?q=tesla&from=2022-09-01&sortBy=publishedAt&apiKey=";
-  // #API_KEY = "8b38dc5dc8b1444b8652b344ddb53020";
+  #API_KEY = "8b38dc5dc8b1444b8652b344ddb53020";
 
   constructor() {
     this._getNewsData();
