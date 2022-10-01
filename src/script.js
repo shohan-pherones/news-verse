@@ -1,10 +1,6 @@
 const newsContainer = document.querySelector(".news-container");
 
 class News {
-  URL =
-    "https://newsapi.org/v2/everything?q=tesla&from=2022-09-01&sortBy=publishedAt&apiKey=";
-  API_KEY = "8b38dc5dc8b1444b8652b344ddb53020";
-
   constructor() {
     this._getNewsData();
     this._renderNews();
@@ -12,7 +8,9 @@ class News {
   }
 
   _getNewsData() {
-    fetch(`${this.URL}${this.API_KEY}`)
+    fetch(
+      "https://newsapi.org/v2/everything?q=tesla&from=2022-09-01&sortBy=publishedAt&apiKey=8b38dc5dc8b1444b8652b344ddb53020"
+    )
       .then((res) => {
         if (!res.ok) throw new Error("Unable to load data from the server...");
         return res.json();
